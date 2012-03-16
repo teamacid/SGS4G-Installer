@@ -30,9 +30,9 @@ splash(4000, "splash");
 #
 # Mount all the mount points. We can manipulate the filesystem before the install.
 #
-run_program("/sbin/mount", "/dev/block/stl9 /system");
-run_program("/sbin/mount", "/dev/block/stl10 /data");
-run_program("/sbin/mount", "/dev/block/mmcblk0p1 /sdcard");
+run_program("/sbin/mount", "/dev/block/mmcblk0p24 /system");
+run_program("/sbin/mount", "/dev/block/mmcblk0p25 /data");
+run_program("/sbin/mount", "/mnt/sdcard/external_sd /sdcard");
 
 ##
 # Default installation options
@@ -92,7 +92,7 @@ ini_set("rom_device",  getvar("rom_device"));
 # In the end, there will be alert dialog with calibration data
 # ( green ), replace this calibrate() function with that data.
 #
-# These are the defaults for the SGS4G
+# These are the defaults for the SGS II
 calibrate("0.88558", "42", "0.9346", "22", "yes");
 
 ##
@@ -252,10 +252,10 @@ then
       "Modem and Kernel", "", 2,
         # Item 2.1
         "Install Modem",
-          "Samsung Galaxy S 4G KJ6 Modem.", 1,
+          "Samsung Galaxy S II Modem", 1,
         # Item 2.2
         "Install Kernel",
-          "bhundven's SMS-KJ6 Kernel.", 1
+          "Samsung Galaxy S II Kernel", 1
   );
   
   # Now we set the customized variables.
