@@ -93,7 +93,7 @@ ini_set("rom_device",  getvar("rom_device"));
 # ( green ), replace this calibrate() function with that data.
 #
 # These are the defaults for the SGS II
-calibrate("0.88558", "42", "0.9346", "22", "yes");
+calibrate("0.9026", "24", "0.9538", "16", "yes");
 
 ##
 # Rom information screen
