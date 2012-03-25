@@ -198,21 +198,31 @@ set_perm(0, 0, 06755, "/system/bin/su");
 set_perm(0, 0, 04755, "/system/xbin/busybox");
 set_progress(0.6);
 
-# if
-  # file_getprop("/tmp/aroma/options.prop","option_install_modem") == "1"
-# then
-  # ui_print("@Flashing radio");
-  # run_program("/tmp/updates/redbend_ua", "restore", "/tmp/updates/modem.bin", "/dev/block/bml12");
-# endif;
-# set_progress(0.7);
+if
+  file_getprop("/tmp/aroma/options.prop","option_install_modem") == "1"
+then
+  ui_print("@Flashing radio");
+  assert(package_extract_file("updates/mdm.bin", "/tmp/mdm.bin"));
+  assert(write_raw_image("/tmp/mdm.bin", "/dev/block/mmcblk0p17"));
+  assert(delete("/tmp/mdm.bin"));
+  assert(package_extract_file("updates/amss.bin", "/tmp/amss.bin"));
+  assert(write_raw_image("/tmp/amss.bin", "/dev/block/mmcblk0p13")); 
+  assert(delete("/tmp/amss.bin"));
+# RIL - For Modems That Require RIL Change
+  assert(package_extract_file("updates/RIL/libril.so", "/tmp/libril.so"));
+  assert(write_raw_image("/tmp/libril.so", "/system/lib/libril.so"));
+  assert(package_extract_file("updates/RIL/libril-qc-qmi-1.so", "/tmp/libril-qc-qmi-1.so"));
+  assert(write_raw_image("/tmp/libril-qc-qmi-1.so", "/system/lib/libril-qc-qmi-1.so"));
+endif;
+set_progress(0.7);
 
 if
   file_getprop("/tmp/aroma/options.prop","option_install_kernel") == "1"
 then
-  ui_print('@Flashing boot image');
-  assert(package_extract_file("boot.img", "/tmp/boot.img"),
-    write_raw_image("/tmp/boot.img", "/dev/block/mmcblk0p8"),
-    delete("/tmp/boot.img"));
+  ui_print("@Flashing boot image");
+  package_extract_file("updates/boot.img", "/tmp/boot.img");
+  write_raw_image("/tmp/boot.img", "/dev/block/mmcblk0p8");
+  delete("/tmp/boot.img");
 endif;
 set_progress(0.75);
 

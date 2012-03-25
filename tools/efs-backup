@@ -5,7 +5,7 @@ set -x
 PATH=/tmp:/sbin:$PATH
 BB=/tmp/busybox
 backup_dir=/sdcard/aroma-backup
-efs_device=/dev/block/stl3
+efs_device=/dev/block/mmcblk0p21
 efs_backfile=$backup_dir/efs-`$BB date +"%m-%d-%y--%H-%M"`.tar
 tmp_backfile=efs
 
