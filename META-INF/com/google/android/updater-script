@@ -206,7 +206,7 @@ then
   write_raw_image("/tmp/mdm.bin", "/dev/block/mmcblk0p17");
   delete("/tmp/mdm.bin");
   package_extract_file("updates/amss.bin", "/tmp/amss.bin");
-  write_raw_image("/tmp/amss.bin", "/dev/block/mmcblk0p13"); 
+  write_raw_image("/tmp/amss.bin", "/dev/block/mmcblk0p13");
   delete("/tmp/amss.bin");
 # RIL - For Modems That Require RIL Change
   package_extract_file("updates/RIL/libril.so", "/tmp/libril.so");
