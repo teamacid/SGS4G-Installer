@@ -1,5 +1,6 @@
 Fix efs-backup not running
-Fix progressbars
+Fix progress bars
+Create and use /mnt/tmp instead of /tmp
 
 ## DONE ##
 Need to find more partition info

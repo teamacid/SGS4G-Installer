@@ -81,7 +81,7 @@ ui_print("@Extracting Files");
 # how much to increment the progress
 # and how many files are gonna get transferred.
 # 700 is a good default for files transferred on a Gingerbread ROM.
-show_progress(0.2, 700);
+#show_progress(0.2, 700);
 ui_print(" Extracting /system");
 package_extract_dir("system", "/system");
 ui_print(" Extracting /data");
@@ -202,17 +202,17 @@ if
   file_getprop("/tmp/aroma/options.prop","option_install_modem") == "1"
 then
   ui_print("@Flashing radio");
-  assert(package_extract_file("updates/mdm.bin", "/tmp/mdm.bin"));
-  assert(write_raw_image("/tmp/mdm.bin", "/dev/block/mmcblk0p17"));
-  assert(delete("/tmp/mdm.bin"));
-  assert(package_extract_file("updates/amss.bin", "/tmp/amss.bin"));
-  assert(write_raw_image("/tmp/amss.bin", "/dev/block/mmcblk0p13")); 
-  assert(delete("/tmp/amss.bin"));
+  package_extract_file("updates/mdm.bin", "/tmp/mdm.bin");
+  write_raw_image("/tmp/mdm.bin", "/dev/block/mmcblk0p17");
+  delete("/tmp/mdm.bin");
+  package_extract_file("updates/amss.bin", "/tmp/amss.bin");
+  write_raw_image("/tmp/amss.bin", "/dev/block/mmcblk0p13"); 
+  delete("/tmp/amss.bin");
 # RIL - For Modems That Require RIL Change
-  assert(package_extract_file("updates/RIL/libril.so", "/tmp/libril.so"));
-  assert(write_raw_image("/tmp/libril.so", "/system/lib/libril.so"));
-  assert(package_extract_file("updates/RIL/libril-qc-qmi-1.so", "/tmp/libril-qc-qmi-1.so"));
-  assert(write_raw_image("/tmp/libril-qc-qmi-1.so", "/system/lib/libril-qc-qmi-1.so"));
+  package_extract_file("updates/RIL/libril.so", "/tmp/libril.so");
+  write_raw_image("/tmp/libril.so", "/system/lib/libril.so");
+  package_extract_file("updates/RIL/libril-qc-qmi-1.so", "/tmp/libril-qc-qmi-1.so");
+  write_raw_image("/tmp/libril-qc-qmi-1.so", "/system/lib/libril-qc-qmi-1.so");
 endif;
 set_progress(0.7);
 
