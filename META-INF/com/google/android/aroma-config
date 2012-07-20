@@ -241,11 +241,11 @@ if
 then
     setvar("current_device", file_getprop("default.prop", "ro.product.device"));
 else
-if
-    file_getprop("/system/build.prop", "ro.product.device") != ""
-then
-    setvar("current_device",
-           file_getprop("/system/build.prop", "ro.product.device"));
+    if
+        file_getprop("/system/build.prop", "ro.product.device") != ""
+    then
+        setvar("current_device",
+            file_getprop("/system/build.prop", "ro.product.device"));
     endif;
 endif;
 
