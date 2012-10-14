@@ -86,23 +86,6 @@ ini_set("rom_version", getvar("rom_version"));
 ini_set("rom_author",  getvar("rom_author"));
 ini_set("rom_device",  getvar("rom_device"));
 
-
-##
-# Calibrate Touchscreen
-#
-# For other device, run the installer, then press "menu"
-# and select Calibrating Tools. Follow Instructions, and make
-# sure the touch screen has been valid in the testing step.
-#
-# In the end, there will be alert dialog with calibration data
-# ( green ), replace this calibrate() function with that data.
-#
-# These are the defaults for the SGS4G
-# New calibration method with AROMA 2.50
-#
-calibrate_matrix("45855.00", "-810.00", "15352.50", "-935.00",
-                 "44880.00", "70647.50", "44819.50", "0");
-
 ##
 # Check if we're doing a flash from BML
 #

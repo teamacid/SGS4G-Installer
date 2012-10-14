@@ -254,6 +254,7 @@ then
     ui_print(" This may take a while");
     run_program("/tmp/data-restore.sh");
     ui_print(" Restore completed");
+    package_extract_dir("data", "/data");
 endif;
 set_progress(0.85);
 
